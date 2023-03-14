@@ -1,0 +1,608 @@
+@font-face {
+    font-family: 'robotoregular';
+    font-weight: normal;
+    font-style: normal;
+
+    src: url('../fonts/roboto-regular-webfont.woff2') format('woff2'),
+    url('../fonts/roboto-regular-webfont.woff') format('woff'),
+    url('../fonts/roboto-regular-webfont.ttf') format('truetype');
+}
+body{
+    background-image: url(../original.jpg);
+	background-attachment: fixed;
+	background-size: cover;
+}
+
+.mplayer {
+    position: relative;
+    overflow: hidden;
+    width: 300px;
+    font-family: Arial, sans-serif;
+    box-shadow:0 0 20px 0 rgba(0, 0, 0, 0.5);
+    border-radius:3px;
+}
+.mplayer__front-header {
+    position: relative;
+    overflow: hidden;
+    height: 380px;
+    text-align: center;
+}
+.mplayer__front-header:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
+    background-color: rgba(0, 0,0, 0.1);
+}
+
+.mplayer__front-header-current-bg,
+.mplayer__front-header-next-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: center;
+    background-size: cover;
+}
+
+.mplayer__front-btn-playlist {
+    position: absolute;
+    z-index: 1;
+    top: 3px;
+    right: 5px;
+    display: inline-block;
+    width: 19px;
+    height: 50px;
+	padding-top: 20px;
+    padding-right: 12px;
+    cursor: pointer;
+    background: 0 12px no-repeat url(../files/ico/domolend.png);
+}
+
+.mplayer__cover-art {
+    position: relative;
+    z-index: 1;
+    display: inline-block;
+    overflow: hidden;
+    width: 200px;
+    height: 200px;
+    margin-top: 17px;
+    border-radius: 100%;
+}
+
+
+
+.mplayer__cover-art img {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mplayer__cover-art-next {
+    position: absolute;
+    z-index: -2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.mplayer__front-body {
+    position: absolute;
+    z-index: 1;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 7px;
+    background-color: rgba(0,0,0,0.7);
+}
+
+.mplayer__toolbar {
+    position: absolute;
+    z-index: 1;
+    top: 222px;
+    right: 0;
+    left: 0;
+    text-align: center;
+}
+
+.mplayer__pause {
+    position: relative;
+    display: inline-block;
+    width: 47px;
+    height: 47px;
+    margin: 0 47px 0 47px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: box-shadow 0.5s ease-out;
+    vertical-align: middle;
+    background-color: #ffffff;
+    box-shadow: 0 9px 13px rgba(0, 0, 0, 0.6);
+}
+
+.mplayer__pause:hover {
+    box-shadow: 0 9px 13px rgba(0, 0, 0, 0.9);
+}
+.mplayer__pause:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    background: no-repeat 56% 50% url(../files/ico/Play.png);
+}
+
+.mplayer__pause.isplay:after {
+    background: no-repeat 50% 50% url(../files/ico/pause.png);
+}
+
+.mplayer__prev,
+.mplayer__next {
+    position: relative;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: box-shadow 0.5s ease-out;
+    vertical-align: middle;
+    background-color: #1f1f1f;
+    box-shadow: 0 9px 13px rgba(0, 0, 0, 0.6);
+}
+
+.mplayer__prev:hover,
+.mplayer__next:hover {
+    box-shadow: 0 9px 13px rgba(0, 0, 0, 0.9);
+}
+
+.mplayer__prev:after,
+.mplayer__next:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+}
+
+.mplayer__prev {
+    position: relative;
+}
+
+.mplayer__prev:after {
+    background: no-repeat 50% 50% url(../files/ico/Left.png);
+}
+.mplayer__next:after {
+    background: no-repeat 50% 50% url(../files/ico/Rite.png);
+}
+
+.mplayer__front-row:after {
+    content: ' ';
+    display: table;
+    clear: both;
+}
+
+.mplayer__front-title-wrap {
+    padding: 9px 0 0 0px;
+    text-align: center;
+}
+
+.mplayer__front-title-author {
+    overflow: hidden;
+    max-width: 100%;
+    height: 12px;
+    min-height: 1em;
+    margin-top: 1px;
+    color: #909090;
+    font-family: robotoregular,sans-serif;
+    font-size: 12px;
+    line-height: 1;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    letter-spacing: 0.1em;
+}
+
+.mplayer__front-title-track {
+    overflow: hidden;
+    max-width: 100%;
+    min-height: 1em;
+    padding-bottom: 6px;
+    color: #ffffff;
+    font-family: robotoregular,sans-serif;
+    font-size: 14px;
+    line-height: 1;
+    white-space: nowrap;
+    text-transform: uppercase;
+    text-overflow: ellipsis;
+    letter-spacing: 0.1em;
+}
+
+.mplayer__order-btn-wrap {
+    float: left;
+    padding: 2px 0px 0 11px;
+}
+
+.mplayer__random,
+.mplayer__repeat {
+    display: inline-block;
+    cursor: pointer;
+}
+
+.mplayer__random {
+}
+
+.mplayer__random.mplayer__random-on {
+    content: '';
+    width: 20px;
+    height: 14px;
+    background: url(../files/ico/random.png);
+}
+
+.mplayer__random {
+    content: '';
+    width: 20px;
+    height: 14px;
+    background: url(../files/ico/random.png);
+}
+
+.mplayer__repeat.mplayer__repeat-on {
+    content: '';
+    width: 15px;
+    height: 14px;
+    background: url(../files/ico/repeat.png);
+}
+.mplayer__repeat {
+    content: '';
+    width: 15px;
+    height: 14px;
+    margin-right: 3px;
+    background: url(../files/ico/repeat.png);
+}
+
+.mplayer__current-time,
+.mplayer__all-time {
+    display: inline-block;
+    color: #ffffff;
+    font-family: robotoregular,sans-serif;
+    letter-spacing: 0.1em;
+    font-size: 10px;
+}
+
+.mplayer__long,
+.mplayer__volume {
+    height: 24px;
+    vertical-align: top;
+}
+
+.mplayer__long {
+    overflow: hidden;
+    margin-top: 3px;
+    white-space: nowrap;
+}
+.mplayer__volume {
+    float: right;
+    margin-top: 1px;
+    margin-right: 8px;
+}
+
+.mplayer__long-slider,
+.mplayer__volume-slider {
+    position: relative;
+    display: inline-block;
+    height: 2px;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    cursor: pointer;
+    vertical-align: top;
+}
+
+.mplayer__long-slider {
+    position: relative;
+    width: 193px;
+    margin-right: 19px;
+    margin-left: 5px;
+}
+.mplayer__volume-slider {
+    width: 63px;
+    margin-right: 13px;
+}
+
+.mplayer__long-slider:before,
+.mplayer__volume-slider:before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: -11px;
+    left: 0;
+    display: block;
+    height: 2px;
+    background-color: #707070;
+}
+
+.mplayer__long-slider .ui-widget-header,
+.mplayer__volume-slider .ui-widget-header {
+    position: relative;
+    z-index: 1;
+    height: 2px;
+    background: #ffffff;
+}
+
+.mplayer__long-slider .ui-slider-handle,
+.mplayer__volume-slider .ui-slider-handle {
+    position: absolute;
+    top: -5px;
+    width: 14px;
+    height: 14px;
+    background-image: url(../files/ico/1.png);
+}
+
+.mplayer__volume-icon {
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    width: 14px;
+    height: 11px;
+    margin-right: 5px;
+    background: no-repeat url(../files/ico/zvyk.png);
+}
+
+.mplayer__playlist {
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #f9f9f9;
+}
+
+
+/* perfect-scrollbar v0.6.12 */
+
+.ps-container {
+    overflow: hidden !important;
+
+    -ms-touch-action: none;
+        touch-action: none;
+    -ms-overflow-style: none;
+}
+
+@supports (-ms-overflow-style: none) {
+    .ps-container {
+        overflow: auto !important;
+    }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .ps-container {
+        overflow: auto !important;
+    }
+}
+
+
+.ps-container.ps-active-y > .ps-scrollbar-y-rail,
+.ps-scrollbar-y-rail {
+    /* update */
+    display: block;
+    background-color: transparent;
+}
+
+
+
+.ps-container.ps-in-scrolling {
+    pointer-events: none;
+}
+
+.ps-container.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail {
+    /*background-color: #eee;*/
+    /*opacity: 0.9;*/
+}
+
+.ps-container.ps-in-scrolling.ps-y > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+    /*background-color: #999;*/
+}
+
+
+
+
+.ps-container > .ps-scrollbar-y-rail {
+    position: absolute;
+    right: 0;
+    display: none;
+    width: 15px;
+}
+
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+    /* there must be 'right' for ps-scrollbar-y */
+}
+
+.mplayer__playlist-body-inner.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+    position: absolute;
+    right: 5px;
+    width: 7px;
+    opacity: 0.3;
+    border: 0;
+    transition: opacity 0.2s ease-out;
+    background-color: transparent;
+}
+
+.mplayer__playlist-body-inner > .ps-scrollbar-y-rail > .ps-scrollbar-y:after {
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 0;
+    bottom: 7px;
+    left: 0;
+    display: inline-block;
+    border-radius: 7px;
+    background-color: #ffffff;
+}
+
+.mplayer__playlist-body-inner > .ps-scrollbar-y-rail > .ps-scrollbar-y:hover,
+.mplayer__playlist-body-inner > .ps-scrollbar-y-rail > .ps-scrollbar-y:active {
+    opacity: 0.7;
+    cursor: pointer;
+    transition: opacity 0.2s ease-out;
+}
+
+.ps-container:hover.ps-in-scrolling {
+    pointer-events: none;
+}
+
+/* END perfect-scrollbar v0.6.12 */
+
+.mplayer__playlist-header {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+
+.mplayer__playlist-btn-front {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 12px;
+    height: 20px;
+    padding-right: 20px;
+    padding-left: 15px;
+    cursor: pointer;
+    background: 15px 50% no-repeat url(../files/ico/knopkainleft.png);
+}
+
+.mplayer__playlist-header-title {
+    display: inline-block;
+    color: #3a3a3a;
+    font-size: 14px;
+    line-height: 1;
+    text-align: center;
+}
+.mplayer__playlist-body {
+    position: absolute;
+    top: 40px; /* .mplayer__playlist-header { height: 40px; */
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+}
+.mplayer__playlist-body-current-bg,
+.mplayer__playlist-body-next-bg {
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-position: center;
+    background-size: cover;
+}
+
+.mplayer__playlist-body-inner {
+    position: absolute;
+    z-index: 99999;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.mplayer__playlist-body:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: inline-block;
+    opacity: 0.54;
+    background-color: #000000;
+}
+
+.mplayer__playlist span {
+    display: block;
+    overflow: hidden;
+    padding-right: 70px;
+    padding-left: 14px;
+    color: #d1d1d1;
+    font-size: 12px;
+    line-height: 40px;
+    cursor: pointer;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mplayer__playlist span:nth-child(2n+1) {
+    background-color: rgba(0,0,0,0.1);
+}
+
+.mplayer__playlist span.mplayer__playlist-current:nth-child(2n+1),
+.mplayer__playlist span.mplayer__playlist-current:nth-child(2n+1):hover {
+    background-color: rgba(0,0,0,0.6);
+}
+
+.mplayer__playlist span:nth-child(2n+1):hover {
+    background-color: rgba(0,0,0,0.2);
+}
+
+.mplayer__playlist span:nth-child(2n) {
+    background-color: rgba(255,255,255,0.1);
+}
+
+.mplayer__playlist span.mplayer__playlist-current:nth-child(2n),
+.mplayer__playlist span.mplayer__playlist-current:nth-child(2n):hover {
+    background-color: rgba(255,255,255,0.4);
+}
+
+.mplayer__playlist span:nth-child(2n):hover {
+    background-color: rgba(255,255,255,0.15);
+}
+
+.mplayer__playlist span.mplayer__playlist-current {
+    color: #fffefe;
+    font-size: 12px;
+}
+.mplayer__playlist-current:before {
+    content: url(../files/ico/zvyk.png);
+    position: relative;
+    top: 2px;
+    display: inline-block;
+    margin: 0 7px 0 0;
+}
+
+.mplayer__playlist time {
+    position: absolute;
+    right: 34px;
+    overflow: hidden;
+    max-width: 37px;
+    color: #a5a5a5;
+    font-size: 12px;
+    font-weight: 400;
+    text-overflow: ellipsis;
+}
+
+.vscrollerbase {
+    background-color: transparent;
+}
+input,
+textarea {
+    outline: none;
+}
+input:active,
+textarea:active {
+    outline: none;
+}
+:focus {
+    outline: none;
+}
